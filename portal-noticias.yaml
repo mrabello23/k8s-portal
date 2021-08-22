@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: portal-noticias
+  labels:
+    app: portal-noticias
+    name: portal-noticias
+spec:
+  containers:
+    - name: portal-noticias-container
+      image: aluracursos/portal-noticias:1
+      ports:
+        - containerPort: 80
+      ## declaração de todas as variáveis do configmap:
+      envFrom:
+        - configMapRef:
+            name: portal-configmap
+      # env:
+      ## declaração de algumas variáveis do configmap:
+      # - name: "IP_SISTEMA"
+      #   valueFrom:
+      #     configMapKeyRef:
+      #       name: db-configmap
+      #       key: IP_SISTEMA
+      ## declaração de envs no arquivo:
+      # - name: "IP_SISTEMA"
+      #   value: "http://localhost:30001"
