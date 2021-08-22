@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-volume
+  labels:
+    name: pod-volume
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:latest
+      volumeMounts:
+        - mountPath: /volume-inside-container
+          name: primeiro-volume
+    - name: jenkins-container
+      image: jenkins:alpine
+      volumeMounts:
+        - mountPath: /volume-inside-container
+          name: primeiro-volume
+  volumes:
+    - name: primeiro-volume
+      hostPath:
+        path: /C/Users/GERAL/code/k8s-volumes
+        type: Directory
+        # type: DirectoryOrCreate --> cria pasta de volume caso não exista
