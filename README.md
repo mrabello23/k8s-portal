@@ -31,20 +31,22 @@ Primeiro portal com K8S
   - `kubectl apply -f ./ConfigMaps/db-configmap.yaml`
 - Deployment:
   - `kubectl apply -f ./Deployments/portal-noticias-deployment.yaml`
-  - `kubectl apply -f ./Deployments/sistema-noticias-deployment.yaml`
   - `kubectl apply -f ./Deployments/db-noticias-deployment.yaml`
+- Stateful Set:
+  - `kubectl apply -f ./StatefulSet/sistema-noticias-statefulset.yaml`
 - List and details:
   - `kubectl get all`
   - `kubectl get pods -o wide`
   - `kubectl get svc`
   - `kubectl get configmap`
   - `kubectl get deployments`
+  - `kubectl get statefulset`
   - `kubectl describe [pod/svc/configmap/deployment] NAME-OF-RESOURCE`
 
 ## Cleanup environment
 
-- Remove pods: `kubectl delete pods --all`
-- Remove services: `kubectl delete svc --all`
-- Remove configMaps: `kubectl delete configMaps --all`
-- Remove replicas set: `kubectl delete rs --all`
 - Remove Deployment: `kubectl delete deployment --all`
+- Remove services: `kubectl delete svc --all`
+- Remove stateful set: `kubectl delete statefulset --all`
+- Remove configMaps: `kubectl delete configMaps --all`
+- Remove pods: `kubectl delete pods --all`
