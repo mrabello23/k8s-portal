@@ -34,6 +34,10 @@ Primeiro portal com K8S
   - `kubectl apply -f ./Deployments/db-noticias-deployment.yaml`
 - Stateful Set:
   - `kubectl apply -f ./StatefulSet/sistema-noticias-statefulset.yaml`
+- Metrics Server (https://github.com/kubernetes-sigs/metrics-server):
+  - `kubectl apply -f ./Autoscaler/components.yaml`
+- Horizontal Pod Autoscaler:
+  - `kubectl apply -f ./Autoscaler/portal-noticias-hpa.yaml`
 - List and details:
   - `kubectl get all`
   - `kubectl get pods -o wide`
@@ -41,12 +45,14 @@ Primeiro portal com K8S
   - `kubectl get configmap`
   - `kubectl get deployments`
   - `kubectl get statefulset`
-  - `kubectl describe [pod/svc/configmap/deployment] NAME-OF-RESOURCE`
+  - `kubectl get hpa`
+  - `kubectl describe RESOURCE-TYPE NAME-OF-RESOURCE`
 
 ## Cleanup environment
 
-- Remove Deployment: `kubectl delete deployment --all`
 - Remove services: `kubectl delete svc --all`
+- Remove deployment: `kubectl delete deployment --all`
+- Remove autoscaler: `kubectl delete hpa --all`
 - Remove stateful set: `kubectl delete statefulset --all`
 - Remove configMaps: `kubectl delete configMaps --all`
 - Remove pods: `kubectl delete pods --all`
